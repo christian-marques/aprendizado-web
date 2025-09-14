@@ -1,0 +1,219 @@
+/* Lembrete: formatação básica para um layout escuro e limpo */
+:root {
+    --bg: #03040a; /* fundo mais escuro */
+    --surface: #0f1724;
+    --text: #e6eef6;
+    --muted: #98a6b3;
+    --accent: #60a5fa;
+    --glass: rgba(255,255,255,0.02);
+}
+
+/* Lembrete: aplicar box-sizing global e proteger contra overflow */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Lembrete: base escura com cantos suaves */
+body {
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(180deg, var(--bg), #071021);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+
+    /* Lembrete: usar layout flex para manter o footer no final */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Lembrete: garantir que header/main/footer alinhem exatamente */
+header, main, footer {
+    width: 100%;
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Lembrete: títulos suaves e legíveis */
+h1, h2, h3 {
+    color: var(--text);
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* Lembrete: parágrafos com leitura confortável */
+p {
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1em;
+
+    /* Lembrete: evitar que parágrafos longos ultrapassem */
+    overflow-wrap: anywhere;
+}
+
+/* Lembrete: container principal escuro e arredondado (ajustar se necessário) */
+.container {
+    max-width: 900px;
+    margin: 40px auto; /* centraliza horizontalmente */
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); /* bloco um pouco mais claro que o fundo */
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+    color: var(--text);
+    text-align: center; /* centraliza o conteúdo interno horizontalmente */
+
+    /* Lembrete: permite empurrar o footer para baixo */
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 80px); /* considera margens verticais da .container */
+}
+
+header {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto 16px; /* centraliza e cria espaçamento abaixo */
+    padding: 14px 20px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+    box-shadow: 0 4px 20px rgba(2,6,23,0.5);
+}
+
+/* Lembrete: título do header deve caber no retângulo */
+header h1 {
+    margin: 0; /* remover margens que empurram o título para fora do retângulo */
+    font-size: clamp(1.1rem, 3.5vw, 1.4rem); /* reduzir se necessário */
+    line-height: 1.1;
+    padding: 0;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+main {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+
+    /* Lembrete: main deve crescer para ocupar o espaço disponível */
+    flex: 1 1 auto;
+}
+
+footer {
+    max-width: 820px;
+    margin: 20px auto 0;
+    text-align: center;
+
+    /* Lembrete: footer deve ficar colado ao final do container */
+    margin-top: auto;
+}
+
+/* Lembrete: aplicar foco acessível em elementos interativos */
+a:focus, button:focus, input:focus, textarea:focus {
+    outline: 3px solid rgba(96,165,250,0.14);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+/* Lembrete: estilos para links */
+a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.profile-photo {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 9999px;
+    border: 2px solid rgba(255,255,255,0.06);
+    display: block;
+    margin: 16px auto 0;
+}
+
+.list-intro {
+    color: var(--text);
+    font-weight: 600;
+    margin-top: 18px;
+    margin-bottom: 12px;
+}
+
+.fancy-list {
+    list-style: none; /* Lembrete: remover estilo padrão */
+    counter-reset: item;
+    padding-left: 0;
+    margin: 0 auto;
+    max-width: 480px; /* limitará largura para melhor leitura */
+    text-align: left; /* alinha os itens à esquerda mesmo em um container centralizado */
+}
+
+.fancy-list li {
+    counter-increment: item;
+    background: rgba(255,255,255,0.02);
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.list-block {
+    margin-top: 8px;
+    flex-direction: column;
+    align-items: center; /* centraliza o bloco */
+}
+
+/* Lembrete: usar contador circular sem ponto */
+.fancy-list li::before {
+    content: counter(item);
+    min-width: 28px;
+    height: 28px;
+    background: rgba(96,165,250,0.12);
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px; /* deixa em formato de círculo */
+    font-weight: 700;
+}
+
+.link-site {
+    margin-top: 18px;
+}
+
+.link-site a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.02);
+    color: var(--text);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.04);
+    text-decoration: none;
+    transition: background 150ms ease, color 150ms ease, transform 120ms ease;
+}
+
+/* Lembrete: aumentar ícone do GitHub se necessário */
+.link-site a .icon {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    object-fit: contain;
+}
+
+.link-site a:hover {
+    background: rgba(96,165,250,0.08);
+    color: var(--accent);
+    transform: translateY(-2px);
+}
